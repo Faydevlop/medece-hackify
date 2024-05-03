@@ -13,8 +13,6 @@ const Schema = new mongoose.Schema({
     password: String,
     isVerified: Boolean,
     isBlocked: Boolean,
-
-
     
 })
 module.exports = mongoose.model('Doctor', Schema)
