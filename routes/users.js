@@ -49,13 +49,13 @@ router.post("/login", async function (req, res, next) {
 router.get("/patient-dashboard", function (req, res, next) {
     const user = req.session.user 
     if (user) {
-        res.render("user/patient-dashboard", { user })
+        res.render("user/patient-dashboard", {user: user })
     } else {
         res.redirect("/login")
     }
 })
 router.get('/', function(req, res, next) {
-  res.render('user/patient-dashboard');
+  res.redirect("/login")
 });
 
 module.exports = router;
