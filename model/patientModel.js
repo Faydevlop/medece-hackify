@@ -5,9 +5,8 @@ const Schema = new mongoose.Schema({
     password: String,
     age: Number,
     gender: String,
-    address: String,
+    city: String,
     phone: Number,
-    image: String,
 
 })
 module.exports = mongoose.model('Patient', Schema)
