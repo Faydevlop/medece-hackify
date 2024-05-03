@@ -10,6 +10,7 @@ const Schema = new mongoose.Schema({
     timings: String,
     phone: String,
     email: String,
+    city:String,
     password: String,
     isVerified: Boolean,
     isBlocked: Boolean,
