@@ -58,6 +58,4 @@ router.get('/', function(req, res, next) {
   res.render('user/patient-dashboard');
 });
 
-
-
 module.exports = router;
