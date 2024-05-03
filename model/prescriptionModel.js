@@ -4,5 +4,5 @@ const Schema = new mongoose.Schema({
         type:String,
         require:true
     }
-})
+},{timestamps:true})
 module.exports = mongoose.model("prescription",Schema)
