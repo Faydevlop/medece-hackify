@@ -36,7 +36,7 @@ router.get("/nearByDoctor", async (req, res, next)=>{
 //get doctor by symptom
 router.get("/getDoctorBySymptom/:symptom", async (req, res, next) => {
     try {
-        const symptom = req.params.symptom.toLowerCase() // Convert to lowercase for case insensitivity
+        const symptom = req.params.symptom.toLowerCase()
         let specializations = []
         if (symptom === "cough") {
             specializations = ["pulmonologist", "general", "ENT"]
@@ -60,7 +60,7 @@ router.get("/getDoctorBySymptom/:symptom", async (req, res, next) => {
             specializations = ["General"]
         }
         else {
-            // Handle unknown symptom
+
             return res.status(400).send("Unknown symptom")
         }
         const doctors = await fetchDoctor(specializations)

@@ -5,7 +5,10 @@ const Schema = new mongoose.Schema({
     phone: String,
     email: String,
     password: String,
-    image: String,
+    image:{
+        type: String,
+        required:false
+    },
     date: { type: Date, default: Date.now },      
 })
 module.exports = mongoose.model("Hostpital", Schema)
