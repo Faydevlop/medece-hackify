@@ -76,5 +76,9 @@ router.get('/', function(req, res, next) {
 });
 
 
+router.get('/prescriptionassist', function(req, res, next) {
+  res.render('user/prescriptionassist');
+});
+
 
 module.exports = router;
