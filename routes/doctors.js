@@ -50,9 +50,26 @@ router.get("/profile", function (req, res, next) {
 })
 
 // Adding doctors
-router.post("/addDoctor", async function (req, res, next) {
-    const { name, email, password } = req.body
-    const doctor = new Doctor({ name, email, password })
+router.post("/register", async function (req, res, next) {
+    const {name,
+    specialization,
+    experience,
+    description,
+    address,
+    phone,
+    email,
+    city,
+    password
+     } = req.body
+    const doctor = new Doctor({
+    specialization,
+    experience,
+    description,
+    address,
+    phone,
+    email,
+    city,
+    password })
     await doctor.save()
     res.redirect("/login")
 })
