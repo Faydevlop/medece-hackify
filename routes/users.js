@@ -164,21 +164,25 @@ router.post('/generate-story', async (req, res) => {
 });
 
 
-router.get('/appointment',(rea,res)=>{
+router.get('/appointment',authMiddleware,(rea,res)=>{
   res.render('user/appointment')
 })
 
 
-router.get('/pharma',(req,res)=>{
+router.get('/pharma',authMiddleware,(req,res)=>{
   res.render('user/pharma/pharma')
 })
 
-router.get('/finddocters',(req,res)=>{
+router.get('/finddocters',authMiddleware,(req,res)=>{
   res.render('user/finddocter')
 })
 
-router.get('/genaral',(req,res)=>{
+router.get('/genaral',authMiddleware,(req,res)=>{
   res.render('user/genaral')
+})
+
+router.get('/premium',(req,res)=>{
+  res.render('user/premium')
 })
 
 
