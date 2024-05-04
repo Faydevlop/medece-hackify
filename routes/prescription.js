@@ -2,19 +2,28 @@ var express = require("express")
 var router = express.Router()
 const prescriptionModel = require("../model/prescriptionModel")
 const { route } = require("./doctors")
+const upload = require("./multerMiddleware")
 
 // adding prescription image to prescription model
-router.post("/uploadPrescription",async (req, res) => {
+router.post("/uploadPrescription", upload.single("prescription"), async (req, res) => {
     try {
+        if (!req.file) {
+            return res.status(400).json({ error: "No file uploaded" })
+        }
+        console.log(req.file)
         const prescription = new prescriptionModel({
-            image: req.file.filename,
+            image: req.file.filename, 
+            userId: req.session.user._id,
+
         })
         await prescription.save()
-        res.status(200).json({ message: "prescription uploaded successfully" })
+        res.status(200).send('<script>alert("Prescription uploded successfully")</script>')
     } catch (error) {
-        console.log(error)
+        console.error(error)
+        res.status(500).json({ error: "Internal server error" })
     }
 })
+
 
 // getiing prescription by the user
 router.get("/getPrescriptionByUser",async (req, res) => {

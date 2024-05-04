@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 const patientModel = require('../model/patientModel');
 const session = require("express-session");
-const authMiddleware = require('../routes/authMiddleware');
+const authMiddleware = require('../routes/authMiddleware')
+const prescriptionModel = require('../model/prescriptionModel');
 //implementing session
 router.use(
     session({
@@ -76,8 +77,16 @@ router.get('/', authMiddleware,function(req, res, next) {
 });
 
 
-router.get('/prescriptionassist',authMiddleware, function(req, res, next) {
-  res.render('user/prescriptionassist');
+router.get('/prescriptionassist', async function(req, res, next) {
+  try {
+      console.log(req.session.user._id)
+      const prescriptions= await prescriptionModel.find({userId:req.session.user._id})
+      console.log(prescriptions)
+      res.render("user/prescriptionassist", { prescriptions })
+  } catch (error) {
+    console.log(error)
+  }
+
 });
 
 

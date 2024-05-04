@@ -38,6 +38,24 @@
     />
 
     <link rel="stylesheet" href="/assets/css/feather.css" />
+    <style>
+        .symptom-button {
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #fff; /* Default background color */
+        }
+        .symptom-button input[type="radio"] {
+            display: none; /* Hide the radio button */
+        }
+        .symptom-button input[type="radio"]:checked + label {
+            background-color: green; /* Change to desired color */
+            color: white;
+        }
+    </style>
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
   </head>
   <body>
@@ -387,56 +405,113 @@
           </div>
           <hr>
 
-          <!-- form 1 -->
-          <div class="card">
-            <div class="card-body">
-                <form>
-                    <div id="symptomButtons">
-                        <!-- Buttons for symptoms will be added here -->
+         <!-- form 1 -->
+<div class="col-12 col-md-6 col-xl-12">
+    <div class="card top-departments">
+        <div class="card-header pb-0">
+            <h4 class="card-title mb-0">Consult Doctor in 1 Click</h4>
+        </div>
+        <div class="card-body pt-1" style="display: flex;">
+            <div class="section" style="flex: 1;">
+                <h5></h5>
+                <div class="note-checkit">
+                    <label class="custom_check">
+                        <input type="checkbox" name="select_specialist" checked />
+                        <span class="checkmark"></span> Fever
+                    </label>
+                </div>
+                <div class="note-checkit">
+                    <label class="custom_check">
+                        <input type="checkbox" name="select_specialist" checked />
+                        <span class="checkmark"></span> Cough
+                    </label>
+                </div>
+                <div class="note-checkit">
+                    <label class="custom_check">
+                        <input type="checkbox" name="select_specialist" />
+                        <span class="checkmark"></span> Headache
+                    </label>
+                </div>
+                <div class="note-checkit">
+                    <label class="custom_check mb-0">
+                        <input type="checkbox" name="select_specialist" />
+                        <span class="checkmark"></span> Difficulty Breathing
+                    </label>
+                </div>
+            </div>
+            <div class="section" style="flex: 1;">
+                <h5></h5>
+                <div class="note-checkit">
+                    <label class="custom_check">
+                        <input type="checkbox" name="select_specialist" checked />
+                        <span class="checkmark"></span> Vomiting
+                    </label>
+                </div>
+                <div class="note-checkit">
+                    <label class="custom_check">
+                        <input type="checkbox" name="select_specialist" />
+                        <span class="checkmark"></span> Frequent Urination
+                    </label>
+                </div>
+                <div class="note-checkit">
+                    <label class="custom_check">
+                        <input type="checkbox" name="select_specialist" />
+                        <span class="checkmark"></span> Back Pain
+                    </label>
+                </div>
+                <div class="note-checkit">
+                    <label class="custom_check mb-0">
+                        <input type="checkbox" name="select_specialist" />
+                        <span class="checkmark"></span> Depression
+                    </label>
+                </div>
+            </div>
+            <div class="section" style="flex: 1;">
+                <h5></h5>
+                <div class="note-checkit">
+                    <label class="custom_check">
+                        <input type="checkbox" name="select_specialist" checked />
+                        <span class="checkmark"></span> Insomnia
+                    </label>
+                </div>
+                <div class="note-checkit">
+                    <label class="custom_check">
+                        <input type="checkbox" name="select_specialist" />
+                        <span class="checkmark"></span> Constipation
+                    </label>
+                </div>
+                <div class="note-checkit">
+                    <label class="custom_check">
+                        <input type="checkbox" name="select_specialist" />
+                        <span class="checkmark"></span> Bloating
+                    </label>
+                </div>
+                <div class="note-checkit">
+                    <label class="custom_check mb-0">
+                        <input type="checkbox" name="select_specialist" />
+                        <span class="checkmark"></span> Rash
+                    </label>
+                </div>
+                <div class="col-12">
+                    <div class="doctor-submit text-end">
+                      <button
+                        type="submit"
+                        class="btn btn-primary submit-form me-2"
+                      >
+                        Find Doctors
+                      </button>
+                      
+                     
                     </div>
-                </form>
             </div>
         </div>
+    </div>
+</div>
+
         
-        <style>
-            .symptom-button {
-                margin-right: 10px;
-                margin-bottom: 10px;
-                padding: 5px 10px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-            .symptom-button.selected {
-                background-color: green; /* Change to desired color */
-                color: white;
-            }
-        </style>
         
-        <script>
-            const symptoms = [
-                "Fever", "Cough", "Headache", 
-                 "Sore Throat", "Loss of Taste or Smell", 
-                "Diarrhea", "Chest Pain", "Difficulty Breathing", 
-                "Weakness", "Abdominal Pain", "Joint Pain", "Loss of Appetite", "Rash",
-                "Vomiting","Dry Cough",
-                "Frequent Urination", "Back Pain", "Constipation", "Sweating", "Heartburn",
-                "Bloating", "Weight Loss", "Insomnia", "Anxiety", "Depression", "Memory Loss", "Runny Nose",
-                
-            ];
         
-            const symptomButtons = document.getElementById('symptomButtons');
         
-            symptoms.forEach(symptom => {
-                const button = document.createElement('button');
-                button.classList.add('symptom-button');
-                button.textContent = symptom;
-                button.addEventListener('click', () => {
-                    button.classList.toggle('selected');
-                });
-                symptomButtons.appendChild(button);
-            });
-        </script>
         
         </div>
         </div>
@@ -748,6 +823,46 @@
       data-cf-settings="f766d52cba414303a7e91423-|49"
       defer
     ></script>
+    <script>
+        const symptoms = [
+            "Fever", "Cough", "Headache", "Sore Throat", "Loss of Taste or Smell", 
+            "Diarrhea", "Chest Pain", "Difficulty Breathing", "Weakness", 
+            "Abdominal Pain", "Joint Pain", "Loss of Appetite", "Rash",
+            "Vomiting", "Dry Cough", "Frequent Urination", "Back Pain", 
+            "Constipation", "Sweating", "Heartburn", "Bloating", 
+            "Weight Loss", "Insomnia", "Anxiety", "Depression", 
+            "Memory Loss", "Runny Nose",
+        ];
+    
+        const symptomButtons = document.getElementById('symptomButtons');
+    
+        symptoms.forEach(symptom => {
+            const button = document.createElement('button');
+            button.classList.add('symptom-button');
+    
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = 'symptom';
+            radio.id = symptom.toLowerCase().replace(' ', '_'); // Use lowercase symptom name as ID
+            radio.addEventListener('change', () => {
+                // Remove 'selected' class from all buttons
+                document.querySelectorAll('.symptom-button').forEach(btn => {
+                    btn.classList.remove('selected');
+                });
+                // Add 'selected' class to the clicked button
+                button.classList.add('selected');
+            });
+    
+            const label = document.createElement('label');
+            label.htmlFor = radio.id;
+            label.textContent = symptom;
+    
+            button.appendChild(radio);
+            button.appendChild(label);
+            symptomButtons.appendChild(button);
+        });
+    </script>
+    
   </body>
 
   <!-- Mirrored from preclinic.dreamstechnologies.com/html/template/add-schedule.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 03 May 2024 14:32:15 GMT -->

@@ -8,6 +8,7 @@ var mongoose = require("mongoose")
 var docterRouter = require('./routes/doctors');
 var usersRouter = require('./routes/users');
 var clinicRouter = require('./routes/clinic')
+var prescriptionRouter = require('./routes/prescription')
 
 var app = express();
 const port = 4000
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/docter', docterRouter);
 app.use('/', usersRouter);
 app.use('/clinic',clinicRouter)
+app.use('/prescription',prescriptionRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

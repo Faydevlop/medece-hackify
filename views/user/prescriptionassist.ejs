@@ -269,7 +269,7 @@ Copy code
     <div class="col-sm-12">
         <div class="card">
             <div class="card-body">
-                <form id="uploadForm">
+                <form id="uploadForm" action="/prescription/uploadPrescription" method="POST" enctype="multipart/form-data"> 
                     <div class="row">
                         <div class="col-12">
                             <div class="form-heading">
@@ -283,7 +283,7 @@ Copy code
                         <div class="col-12 col-md-6 col-xl-12" style="margin-top: 30px;">
                             <div class="input-block local-forms">
                                 <label>Upload your Prescription <span class="login-danger">*</span></label>
-                                <input id="prescriptionUpload" class="form-control" type="file" />
+                                <input id="prescriptionUpload" name="prescription" class="form-control" type="file" />
                             </div>
                         </div>
                         <div class="col-12">
@@ -291,13 +291,13 @@ Copy code
                                 <button type="submit" class="btn btn-primary submit-form me-2" id="submitButton">
                                     Submit
                                 </button>
-                                <button type="button" class="btn btn-primary cancel-form" style="display: none;" id="generateResultButton">
+                                <!-- <button type="button" class="btn btn-primary cancel-form" style="display: none;" id="generateResultButton">
                                     Generate Result
                                 </button>
                             </div>
                             <div id="textareaContainer" style="display: none;">
                                 <textarea class="form-control mt-3" rows="5" placeholder="Enter your text here"></textarea>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </form>
@@ -305,6 +305,24 @@ Copy code
         </div>
     </div>
 </div>
+<!--Showing Prescription-->
+<div>
+<div>
+  <% for (let prescription of prescriptions) { %>
+    <img width="50%" height="25%" src="/assets/uploads/<%=prescription.image %>" alt="img not found">
+    <div id="textareaContainer" >
+        <div style="width: 90%; height: 20%; border: 1px solid black;">
+          <p>
+            <%=prescription.comment %>
+          </p>
+        </div>
+        <br><br><br>
+         
+    </div>
+    
+    <% } %>
+</div>
+
         <div class="notification-box">
           <div class="msg-sidebar notifications msg-noti">
             <div class="topnav-dropdown-header">
@@ -613,17 +631,17 @@ Copy code
     
 <script>
     
-    document.getElementById('uploadForm').addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevent form submission
-        var fileInput = document.getElementById('prescriptionUpload');
-        if (fileInput.files.length > 0) {
-            document.getElementById('submitButton').style.display = 'none'; // Hide the submit button
-            document.getElementById('generateResultButton').style.display = 'inline-block'; // Show the generate result button
-            document.getElementById('textareaContainer').style.display = 'block'; // Show the textarea
-        } else {
-            alert('Please upload a file.');
-        }
-    });
+    // document.getElementById('uploadForm').addEventListener('submit', function(e) {
+    //     e.preventDefault(); // Prevent form submission
+    //     var fileInput = document.getElementById('prescriptionUpload');
+    //     if (fileInput.files.length > 0) {
+    //         document.getElementById('submitButton').style.display = 'none'; // Hide the submit button
+    //         document.getElementById('generateResultButton').style.display = 'inline-block'; // Show the generate result button
+    //         document.getElementById('textareaContainer').style.display = 'block'; // Show the textarea
+    //     } else {
+    //         alert('Please upload a file.');
+    //     }
+    // });
 </script>
   </body>
 

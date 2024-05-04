@@ -10,11 +10,14 @@ const Schema = new mongoose.Schema(
             ref: "Patient",
         },
         doctorId: {
+            require: false,
             type: mongoose.Schema.Types.ObjectId,
             ref: "Doctor",
         },
         comment:{
-            type:String
+            require:false,
+            type:String,
+            default:"Wait for your answer"
         }
     },
     { timestamps: true }
