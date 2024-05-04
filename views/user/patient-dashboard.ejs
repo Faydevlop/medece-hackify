@@ -129,157 +129,100 @@
         <div class="header-left">
           <a href="index.html" class="logo">
             <img src="/assets/img/logo.png" width="35" height="35" alt />
-            <span>Pre Clinic</span>
+            <span>Medease</span>
           </a>
         </div>
         <a id="toggle_btn" href="javascript:void(0);"
-          ><img src="/assets/img/icons/bar-icon.svg" alt
-        /></a>
+          >
+        </a>
         <a id="mobile_btn" class="mobile_btn float-start" href="#sidebar"
           ><img src="/assets/img/icons/bar-icon.svg" alt
         /></a>
+
         <div class="top-nav-search mob-view">
-          <form>
-            <input type="text" class="form-control" placeholder="Search here" />
-            <a class="btn"
-              ><img src="/assets/img/icons/search-normal.svg" alt
-            /></a>
-          </form>
+            <form>
+                <select class="form-control" onchange="searchCity(this.value)">
+                    <option value="Null">Select a city</option>
+                    <option value="thiruvananthapuram">Thiruvananthapuram</option>
+                            <option value="kochi">Kochi</option>
+                            <option value="kozhikode">Kozhikode</option>
+                            <option value="thrissur">Thrissur</option>
+                            <option value="kollam">Kollam</option>
+                            <option value="palakkad">Palakkad</option>
+                            <option value="malappuram">Malappuram</option>
+                            <option value="kannur">Kannur</option>
+                            <option value="alappuzha">Alappuzha</option>
+                            <option value="kottayam">Kottayam</option>
+                            <option value="pathanamthitta">Pathanamthitta</option>
+                            <option value="idukki">Idukki</option>
+                            <option value="wayanad">Wayanad</option>
+                            <option value="kasaragod">Kasaragod</option>
+                            <option value="ernakulam">Ernakulam</option>
+                            <option value="kothamangalam">Kothamangalam</option>
+                            <option value="muvattupuzha">Muvattupuzha</option>
+                            <option value="north paravur">North Paravur</option>
+                            <option value="aluva">Aluva</option>
+                            <option value="angamaly">Angamaly</option>
+                            <option value="aluva">Aluva</option>
+                            <option value="angamaly">Angamaly</option>
+                            <option value="arakuzha">Arakuzha</option>
+                            <option value="choondy">Choondy</option>
+                            <option value="eernakulam">Eernakulam</option>
+                            <option value="edakkattuvayal">Edakkattuvayal</option>
+                            <option value="edathala">Edathala</option>
+                            <option value="elavoor">Elavoor</option>
+                            <option value="irumbanam">Irumbanam</option>
+                            <option value="kanjoor">Kanjoor</option>
+                            <option value="karukutty">Karukutty</option>
+                            <option value="keezhmad">Keezhmad</option>
+                            <option value="kizhakkambalam">Kizhakkambalam</option>
+                            <option value="kolenchery">Kolenchery</option>
+                            <option value="koratty">Koratty</option>
+                            <option value="kothamangalam">Kothamangalam</option>
+                            <option value="kunnathunad">Kunnathunad</option>
+                            <option value="malayattoor-nadayar">Malayattoor-Nadayar</option>
+                            <option value="maneed">Maneed</option>
+                            <option value="marampally">Marampally</option>
+                            <option value="marady">Marady</option>
+                            <option value="marakkaravazhy">Marakkaravazhy</option>
+                            <option value="maruthayoor">Maruthayoor</option>
+                            <option value="mulanthuruthy">Mulanthuruthy</option>
+                            <option value="muvattupuzha">Muvattupuzha</option>
+                            <option value="nayarambalam">Nayarambalam</option>
+                            <option value="north-paravur">North Paravur</option>
+                            <option value="palissery">Palissery</option>
+                            <option value="panampilly-nagar">Panampilly Nagar</option>
+                            <option value="parakkadavu">Parakkadavu</option>
+                            <option value="paravur">Paravur</option>
+                            <option value="payipra">Payipra</option>
+                            <option value="payyappilly">Payyappilly</option>
+                            <option value="perumbavoor">Perumbavoor</option>
+                            <option value="perumthuruthy">Perumthuruthy</option>
+                            <option value="pindimana">Pindimana</option>
+                            <option value="piravom">Piravom</option>
+                            <option value="pookkattupady">Pookkattupady</option>
+                            <option value="rayamangalam">Rayamangalam</option>
+                            <option value="south-cheranallur">South Cheranallur</option>
+                            <option value="thirumarady">Thirumarady</option>
+                            <option value="thuruthipuram">Thuruthipuram</option>
+                            <option value="thripunithura">Thripunithura</option>
+                            <option value="vadakara">Vadakara</option>
+                            <option value="varappetty">Varappetty</option>
+                            <option value="varapuzha">Varapuzha</option>
+                            <option value="vazhakulam">Vazhakulam</option>
+                            <option value="vengola">Vengola</option>
+                            <option value="vyttila">Vyttila</option>
+                            <option value="perumbavoor">Perumbavoor</option>
+                </select>
+                <a class="btn" onclick="searchCity(document.querySelector('.form-control').value)">
+                    <img src="/assets/img/icons/search-normal.svg" alt />
+                </a>
+            </form>
         </div>
+        
+        
         <ul class="nav user-menu float-end">
-          <li class="nav-item dropdown d-none d-md-block">
-            <a
-              href="#"
-              class="dropdown-toggle nav-link"
-              data-bs-toggle="dropdown"
-              ><img src="/assets/img/icons/note-icon-02.svg" alt /><span
-                class="pulse"
-              ></span>
-            </a>
-            <div class="dropdown-menu notifications">
-              <div class="topnav-dropdown-header">
-                <span>Notifications</span>
-              </div>
-              <div class="drop-scroll">
-                <ul class="notification-list">
-                  <li class="notification-message">
-                    <a href="activities.html">
-                      <div class="media">
-                        <span class="avatar">
-                          <img
-                            alt="John Doe"
-                            src="/assets/img/user.jpg"
-                            class="img-fluid"
-                          />
-                        </span>
-                        <div class="media-body">
-                          <p class="noti-details">
-                            <span class="noti-title">John Doe</span> added new
-                            task
-                            <span class="noti-title"
-                              >Patient appointment booking</span
-                            >
-                          </p>
-                          <p class="noti-time">
-                            <span class="notification-time">4 mins ago</span>
-                          </p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="notification-message">
-                    <a href="activities.html">
-                      <div class="media">
-                        <span class="avatar">V</span>
-                        <div class="media-body">
-                          <p class="noti-details">
-                            <span class="noti-title">Tarah Shropshire</span>
-                            changed the task name
-                            <span class="noti-title"
-                              >Appointment booking with payment gateway</span
-                            >
-                          </p>
-                          <p class="noti-time">
-                            <span class="notification-time">6 mins ago</span>
-                          </p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="notification-message">
-                    <a href="activities.html">
-                      <div class="media">
-                        <span class="avatar">L</span>
-                        <div class="media-body">
-                          <p class="noti-details">
-                            <span class="noti-title">Misty Tison</span> added
-                            <span class="noti-title">Domenic Houston</span> and
-                            <span class="noti-title">Claire Mapes</span> to
-                            project
-                            <span class="noti-title"
-                              >Doctor available module</span
-                            >
-                          </p>
-                          <p class="noti-time">
-                            <span class="notification-time">8 mins ago</span>
-                          </p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="notification-message">
-                    <a href="activities.html">
-                      <div class="media">
-                        <span class="avatar">G</span>
-                        <div class="media-body">
-                          <p class="noti-details">
-                            <span class="noti-title">Rolland Webber</span>
-                            completed task
-                            <span class="noti-title"
-                              >Patient and Doctor video conferencing</span
-                            >
-                          </p>
-                          <p class="noti-time">
-                            <span class="notification-time">12 mins ago</span>
-                          </p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="notification-message">
-                    <a href="activities.html">
-                      <div class="media">
-                        <span class="avatar">V</span>
-                        <div class="media-body">
-                          <p class="noti-details">
-                            <span class="noti-title">Bernardo Galaviz</span>
-                            added new task
-                            <span class="noti-title">Private chat module</span>
-                          </p>
-                          <p class="noti-time">
-                            <span class="notification-time">2 days ago</span>
-                          </p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="topnav-dropdown-footer">
-                <a href="activities.html">View all Notifications</a>
-              </div>
-            </div>
-          </li>
-          <li class="nav-item dropdown d-none d-md-block">
-            <a
-              href="javascript:void(0);"
-              id="open_msg_box"
-              class="hasnotifications nav-link"
-              ><img src="/assets/img/icons/note-icon-01.svg" alt /><span
-                class="pulse"
-              ></span>
-            </a>
-          </li>
+          
           <li class="nav-item dropdown has-arrow user-profile-list">
             <a
               href="#"
@@ -288,7 +231,7 @@
             >
               <div class="user-names">
                 <h5>Liam Michael</h5>
-                <span>Admin</span>
+                <span>User</span>
               </div>
               <span class="user-img">
                 <img src="/assets/img/user-06.jpg" alt="Admin" />
@@ -341,9 +284,7 @@
                   <li class="breadcrumb-item">
                     <a href="index.html">Dashboard </a>
                   </li>
-                  <li class="breadcrumb-item">
-                    <i class="feather-chevron-right"></i>
-                  </li>
+                 
                   <li class="breadcrumb-item active">Patient Dashboard</li>
                 </ul>
               </div>
@@ -394,7 +335,7 @@
                 <div class="card-body">
                   <div class="report-head">
                     <h4>
-                        <a href="/page1" style="text-decoration: none;">
+                        <a href="/prescriptionassist" style="text-decoration: none;">
                       <img
                       style="height: 80px;width: 80px;"
                         src="https://as1.ftcdn.net/v2/jpg/01/62/59/04/1000_F_162590462_StuNG5boff6MVrZOCmbnDv8HPNfITqZl.jpg"
@@ -408,7 +349,7 @@
                     <!-- <h5>110 <span>bpm</span></h5> -->
                     <hr>
                     <p>
-                        <a href="/page1"><span class="passive-view"
+                        <a href="/prescriptionassist"><span class="passive-view"
                             ><i class="feather-arrow-up-right me-1"></i>Find Nearest Doctor</span
                           ></a>
                       
@@ -561,9 +502,11 @@
                         <div class="main-limit ms-3">
                             <p style="font-size: 15px;" >Upgrade to </p>
                             <div class="d-flex align-items-center">
-                                <h4>MedPlus</h4>
+                                <h4 style="padding-left: 10px;">MedPlus</h4>
                                 
                             </div>
+                        
+                            <p style="font-size: 15px; padding-top: 10px; " >Get Extra Fetures</p>
                         </div>
                     </div>
                 </div>

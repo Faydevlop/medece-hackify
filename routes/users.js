@@ -14,6 +14,8 @@ router.get('/', function(req, res, next) {
   res.render('user/patient-dashboard');
 });
 
-
+router.get('/prescriptionassist',(req,res)=>{
+  res.render()
+})
 
 module.exports = router;
