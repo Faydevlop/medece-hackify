@@ -18,8 +18,8 @@ const Schema = new mongoose.Schema({
     email: String,
     city:String,
     password: String,
-    // isVerified: Boolean,
-    // isBlocked: Boolean,
+    isVerified: Boolean,
+    isBlocked: Boolean,
     
 })
 module.exports = mongoose.model('Doctor', Schema)
