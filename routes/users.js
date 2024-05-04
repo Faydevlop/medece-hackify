@@ -5,6 +5,8 @@ const session = require("express-session");
 const authMiddleware = require('../routes/authMiddleware')
 const prescriptionModel = require('../model/prescriptionModel');
 const doctorModel = require("../model/doctorModel")
+const requestIp = require('request-ip');
+const geoip = require('geoip-lite');
 //implementing session
 router.use(
     session({
@@ -64,6 +66,10 @@ router.post("/login", async function (req, res, next) {
         res.status(500).send("Internal Server Error")
     }
 })
+
+
+
+
 //getting patient dashboard after login
 router.get("/patient-dashboard",authMiddleware,  function (req, res, next) {
     const user = req.session.user 
@@ -162,5 +168,19 @@ router.post('/generate-story', async (req, res) => {
 router.get('/appointment',(rea,res)=>{
   res.render('user/appointment')
 })
+
+
+router.get('/pharma',(req,res)=>{
+  res.render('user/pharma/pharma')
+})
+
+router.get('/finddocters',(req,res)=>{
+  res.render('user/finddocter')
+})
+
+router.get('/genaral',(req,res)=>{
+  res.render('user/genaral')
+})
+
 
 module.exports = router;
