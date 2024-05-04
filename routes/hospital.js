@@ -21,15 +21,31 @@ router.get('/register', (req,res)=>{
  res.render('hospital/register')
 })
 //adding hospitals
-router.post("/register", (req, res) => {
+router.post("/register", async (req, res) => {
     try {
-      const newHospital = new hostpitalModel(userName,address,phone, email, password);
-      newHospital.save();
-      res.redirect("/hospital/login");
+        const { username, address, phone, email, password, city } = req.body
+
+     
+        const newHospital = new hostpitalModel({
+            username: username,
+            address: address,
+            phone: phone,
+            email: email,
+            password: password,
+            city: city,
+        })
+
+     
+        await newHospital.save()
+
+   
+        res.redirect("/hospital/login")
     } catch (error) {
-      console.log(error);
+        console.log(error)
+        // Handle errors appropriately
     }
-  })
+})
+
 
 //login hospital
 
@@ -37,8 +53,8 @@ router.post("/login", (req, res) => {
    try {
      const email = req.body.email;
      const password = req.body.password;
-     const user = Hospital.findOne({ email: email, password: password });
-     if (user) {
+     const hospital = hostpitalModel.findOne({ email: email, password: password });
+     if (hospital) {
        req.session.hospitalId = hospital._id;
        res.redirect("/hospital/Dashboard");
      }
