@@ -404,10 +404,13 @@
                         <div class="input-block local-forms">
                           <label>Consulting Doctor</label>
                           <select name="doctor" class="form-control select">
+                        
                             <option>Select Doctor</option>
-                            <option>Dr.Bernardo James</option>
-                            <option>Dr.Andrea Lalema</option>
-                            <option>Dr.William Stephin</option>
+                            <% for( doctor of doctors ) { %>
+                              <option value="<%= doctor.firstname %>">Dr. <%= doctor.firstname %></option>
+                            <% } %>
+                           
+                           
                           </select>
                         </div>
                       </div>
@@ -416,9 +419,11 @@
                           <label>Hospital</label>
                           <select class="form-control" name="hospital" id="hospitalSelect">
                             <option value="">Select Hospital</option>
-                            <option value="Aster Medcity">Aster Medcity</option>
-                            <option value="Amrita Hospital">Amrita Hospital</option>
-                            <option value="Lakeshore Hospital">Lakeshore Hospital</option>
+                            <% for( hospital of hospitals ) { %>
+                              <option value="<%= hospital.username %>">Dr .<%= hospital.username %></option>
+                            <% } %>
+                            
+                           
                             <!-- Add more hospitals here -->
                           </select>
                         </div>
