@@ -1,7 +1,8 @@
 const mongoose=require('mongoose')
 const Schema = new mongoose.Schema({
-    name: String,
-    specialization: String,
+    firstname: String,
+    lastname: String,
+    department: String,
     experience: Number,
     image: {
         type: String,
@@ -13,15 +14,18 @@ const Schema = new mongoose.Schema({
         type: String,
         required: false,
     },
-    phone: String,
+    mobile: Number,
     email: String,
+    gender: String,
+    education: String,
+    age:Number,
     city: String,
+    State: String,
+    pincode: Number,
     hospital: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Hostpital",
     },
     password: String,
-    isVerified: Boolean,
-    isBlocked: Boolean,
 })
 module.exports = mongoose.model('Doctor', Schema)

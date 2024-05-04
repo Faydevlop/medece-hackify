@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var session = require("express-session");
 const hostpitalModel = require('../model/hostpitalModel');
+const doctorModel = require('../model/doctorModel');
 
 
 //session implementaion
@@ -74,6 +75,52 @@ router.get("/Dashboard", (req, res) => {
         console.log(error)
     }
 })
+//get all doctors
+router.get("/getDoctors",async (req, res) => {
+    try {
+         const doctors = await doctorModel.find({hospital:req.session.hospitalId})
+        res.render("hospital/doctor-list",{doctors})
+    } catch (error) {}
+})
+
+// adding doctors
+router.get("/add-doctor", (req, res) => {
+    try {
+        res.render("hospital/add-doctor")
+    } catch (error) {
+        console.log(error)
+    }
+})
+// adding doctors by hospital
+
+router.post("/add-doctor",async (req, res) => {
+        try {
+            const {  firstname, lastname,   department,experience, description, address, mobile, email, gender, education, age,city,State, pincode,password}=req.body
+            const newDoctor = new doctorModel({
+                firstname,
+                lastname,
+                department,
+                experience,
+                description,
+                address,
+                mobile,
+                email,
+                gender,
+                education,
+                age,
+                city,
+                State,
+                pincode,
+                password,
+                hospital:req.session.hospitalId
+            })
+            newDoctor.save()
+            res.redirect("/hospital/getDoctors")
+        } catch (error) {
+          console.log(error)  
+        }
+})
+
 //logout  
 router.get("/logout", (req, res) => {
   try {
