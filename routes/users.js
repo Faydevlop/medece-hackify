@@ -71,14 +71,21 @@ router.get("/patient-dashboard",authMiddleware,  function (req, res, next) {
         res.redirect("/login")
     }
 })
-router.get('/', function(req, res, next) {
+router.get('/', authMiddleware,function(req, res, next) {
   res.redirect("/login")
 });
 
 
-router.get('/prescriptionassist', function(req, res, next) {
+router.get('/prescriptionassist',authMiddleware, function(req, res, next) {
   res.render('user/prescriptionassist');
 });
+
+
+router.get('/enterdetials', authMiddleware,function(req, res, next) {
+  res.render('user/consult');
+});
+
+
 
 
 module.exports = router;
