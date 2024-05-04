@@ -199,16 +199,20 @@ router.post("/book-appointment",async(req,res)=>{
    }
 })
 
-router.get('/pharma',(req,res)=>{
+router.get('/pharma',authMiddleware,(req,res)=>{
   res.render('user/pharma/pharma')
 })
 
-router.get('/finddocters',(req,res)=>{
+router.get('/finddocters',authMiddleware,(req,res)=>{
   res.render('user/finddocter')
 })
 
-router.get('/genaral',(req,res)=>{
+router.get('/genaral',authMiddleware,(req,res)=>{
   res.render('user/genaral')
+})
+
+router.get('/premium',(req,res)=>{
+  res.render('user/premium')
 })
 
 
