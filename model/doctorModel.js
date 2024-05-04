@@ -18,14 +18,11 @@ const Schema = new mongoose.Schema({
     email: String,
     gender: String,
     education: String,
-    age:Number,
+    age: Number,
     city: String,
     State: String,
     pincode: Number,
-    hospital: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Hostpital",
-    },
+    hospital: String,
     password: String,
 })
 module.exports = mongoose.model('Doctor', Schema)

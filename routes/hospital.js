@@ -50,20 +50,27 @@ router.post("/register", async (req, res) => {
 
 //login hospital
 
-router.post("/login", (req, res) => {
-   try {
-     const email = req.body.email;
-     const password = req.body.password;
-     const hospital = hostpitalModel.findOne({ email: email, password: password });
-     if (hospital) {
-       req.session.hospitalId = hospital._id;
-       res.redirect("/hospital/Dashboard");
-     }
-   } catch (error) {
-     console.log(error);
-   }
-   
+router.post("/login", async (req, res) => {
+    try {
+        const email = req.body.email
+        const password = req.body.password
+        const hospital = await hostpitalModel.findOne({
+            email: email,
+            password: password,
+        })
+        console.log(hospital)
+        if (hospital) {
+            console.log(hospital.username)
+            req.session.hospitalId = hospital._id
+            req.session.hospitalName = hospital.username
+            console.log(req.session.hospitalName)
+            res.redirect("/hospital/Dashboard")
+        }
+    } catch (error) {
+        console.log(error)
+    }
 })
+
 
 //dashboard
 router.get("/Dashboard", (req, res) => {
@@ -95,6 +102,7 @@ router.get("/add-doctor", (req, res) => {
 
 router.post("/add-doctor",async (req, res) => {
         try {
+            console.log(req.session.hospitalName)
             const {  firstname, lastname,   department,experience, description, address, mobile, email, gender, education, age,city,State, pincode,password}=req.body
             const newDoctor = new doctorModel({
                 firstname,
@@ -112,7 +120,7 @@ router.post("/add-doctor",async (req, res) => {
                 State,
                 pincode,
                 password,
-                hospital:req.session.hospitalId
+                hospital: req.session.hospitalName,
             })
             newDoctor.save()
             res.redirect("/hospital/getDoctors")
