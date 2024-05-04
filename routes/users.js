@@ -101,29 +101,28 @@ router.get('/enterdetials', authMiddleware,function(req, res, next) {
   res.render('user/consult');
 });
 //finding doctor by filtering
-router.post('/finddocter', authMiddleware, async function(req, res, next) {
-   try {
-       const { symptoms, hospital, specialty } = req.body
-       if(hospital){
-           const doctors = await doctorModel.find({ hospital: hospital })
-             res.render("user/finddocter", { doctors })
-       }else if (hospital && specialty) {
-          const doctors = await doctorModel.find({
-              $and: [{ specialization: specialty }, { hospital: hospital }],
-          })
-            res.render("user/finddocter", { doctors })
+router.post("/finddocter", authMiddleware, async function (req, res, next) {
+    try {
+        const { symptoms, hospital, specialty } = req.body
+        let doctors
 
-       } else if (specialty) {
-         const doctors = await doctorModel.find({ specialization: specialty })
-           res.render("user/finddocter", { doctors })
-       }
+        if (hospital && specialty) {
+            doctors = await doctorModel.find({
+                department: specialty,
+                hospital: hospital,
+            })
+        } else if (hospital) {
+            doctors = await doctorModel.find({ hospital: hospital })
+        } else if (specialty) {
+            doctors = await doctorModel.find({ department: specialty })
+        }
 
-      
-   } catch (error) {
-      console.log(error)
-   }
+        res.render("user/finddocter", { doctors })
+    } catch (error) {
+        console.log(error)
+    }
+})
 
-});
 
 router.get('/vediocall', function(req, res, next) {
   res.render('user/videocall');
