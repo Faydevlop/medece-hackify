@@ -11,7 +11,7 @@ const Schema = new mongoose.Schema({
     address: String,
     timings:{
         type:String,
-        required:fa
+        required:false
 
     },
     phone: String,

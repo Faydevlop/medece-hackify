@@ -94,6 +94,10 @@ router.get('/enterdetials', authMiddleware,function(req, res, next) {
   res.render('user/consult');
 });
 
+router.get('/finddocter', authMiddleware,function(req, res, next) {
+  res.render('user/finddocter');
+});
+
 
 
 
