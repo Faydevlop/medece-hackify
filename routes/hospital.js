@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var session = require("express-session");
 const hostpitalModel = require('../model/hostpitalModel');
+const doctorModel = require('../model/doctorModel');
 
 
 //session implementaion
@@ -21,15 +22,31 @@ router.get('/register', (req,res)=>{
  res.render('hospital/register')
 })
 //adding hospitals
-router.post("/register", (req, res) => {
+router.post("/register", async (req, res) => {
     try {
-      const newHospital = new hostpitalModel(userName,address,phone, email, password);
-      newHospital.save();
-      res.redirect("/hospital/login");
+        const { username, address, phone, email, password, city } = req.body
+
+     
+        const newHospital = new hostpitalModel({
+            username: username,
+            address: address,
+            phone: phone,
+            email: email,
+            password: password,
+            city: city,
+        })
+
+     
+        await newHospital.save()
+
+   
+        res.redirect("/hospital/login")
     } catch (error) {
-      console.log(error);
+        console.log(error)
+        // Handle errors appropriately
     }
-  })
+})
+
 
 //login hospital
 
@@ -37,8 +54,8 @@ router.post("/login", (req, res) => {
    try {
      const email = req.body.email;
      const password = req.body.password;
-     const user = Hospital.findOne({ email: email, password: password });
-     if (user) {
+     const hospital = hostpitalModel.findOne({ email: email, password: password });
+     if (hospital) {
        req.session.hospitalId = hospital._id;
        res.redirect("/hospital/Dashboard");
      }
@@ -58,6 +75,52 @@ router.get("/Dashboard", (req, res) => {
         console.log(error)
     }
 })
+//get all doctors
+router.get("/getDoctors",async (req, res) => {
+    try {
+         const doctors = await doctorModel.find({hospital:req.session.hospitalId})
+        res.render("hospital/doctor-list",{doctors})
+    } catch (error) {}
+})
+
+// adding doctors
+router.get("/add-doctor", (req, res) => {
+    try {
+        res.render("hospital/add-doctor")
+    } catch (error) {
+        console.log(error)
+    }
+})
+// adding doctors by hospital
+
+router.post("/add-doctor",async (req, res) => {
+        try {
+            const {  firstname, lastname,   department,experience, description, address, mobile, email, gender, education, age,city,State, pincode,password}=req.body
+            const newDoctor = new doctorModel({
+                firstname,
+                lastname,
+                department,
+                experience,
+                description,
+                address,
+                mobile,
+                email,
+                gender,
+                education,
+                age,
+                city,
+                State,
+                pincode,
+                password,
+                hospital:req.session.hospitalId
+            })
+            newDoctor.save()
+            res.redirect("/hospital/getDoctors")
+        } catch (error) {
+          console.log(error)  
+        }
+})
+
 //logout  
 router.get("/logout", (req, res) => {
   try {

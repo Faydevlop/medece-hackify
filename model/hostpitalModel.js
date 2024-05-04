@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 const Schema = new mongoose.Schema({
-    name: String,
+    username: String,
     address: String,
     phone: String,
     email: String,
     password: String,
-    city:String,
-    image:{
+    city: String,
+    image: {
         type: String,
-        required:false
-    },   
+        required: false,
+    },
 })
 module.exports = mongoose.model("Hostpital", Schema)
