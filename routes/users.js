@@ -158,5 +158,8 @@ router.post('/generate-story', async (req, res) => {
 });
 
 
+router.get('/appointment',(rea,res)=>{
+  res.render('user/appointment')
+})
 
 module.exports = router;

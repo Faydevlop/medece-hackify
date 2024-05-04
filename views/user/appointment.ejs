@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- Mirrored from preclinic.dreamstechnologies.com/html/template/chat.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 03 May 2024 14:32:20 GMT -->
+  <!-- Mirrored from preclinic.dreamstechnologies.com/html/template/add-appointment.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 03 May 2024 14:32:15 GMT -->
   <head>
     <meta charset="utf-8" />
     <meta
@@ -17,24 +17,28 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+
     <link
       rel="stylesheet"
       type="text/css"
       href="/assets/css/bootstrap.min.css"
     />
+
     <link
       rel="stylesheet"
       href="/assets/plugins/fontawesome/css/fontawesome.min.css"
     />
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css" />
+
     <link rel="stylesheet" type="text/css" href="/assets/css/select2.min.css" />
 
     <link
       rel="stylesheet"
-      href="/assets/plugins/datatables/datatables.min.css"
+      href="/assets/css/bootstrap-datetimepicker.min.css"
     />
 
     <link rel="stylesheet" href="/assets/css/feather.css" />
+
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css" />
   </head>
   <body>
@@ -253,112 +257,208 @@
           </div>
           
         </div>
-      </div>
-      <div class="page-wrapper">
+      </div><div class="page-wrapper">
         <div class="content">
           <div class="page-header">
             <div class="row">
               <div class="col-sm-12">
                 <ul class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="chat.html">App </a></li>
+                  <li class="breadcrumb-item">
+                    <a href="appointments.html">Appointment </a>
+                  </li>
                   <li class="breadcrumb-item">
                     <i class="feather-chevron-right"></i>
                   </li>
-                  <li class="breadcrumb-item active">Chat</li>
+                  <li class="breadcrumb-item active">Book Appointment</li>
                 </ul>
               </div>
             </div>
           </div>
 
           <div class="row">
-            
-            <div class="col-xl-12   ">
-                
-              
-
-              <div class="card chat-message-box">
-                <div class="card-body p-0">
-                  <div class="chat-body">
-                    <ul class="list-unstyled chat-message">
-                        <h3>Ask AI to Help</h3>
-                        <hr>
-                     
-                      
-                      <li class="media d-flex sent">
-                        <div class="media-body flex-grow-1">
-                          
+            <div class="col-sm-12">
+              <div class="card">
+                <div class="card-body">
+                  <form>
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="form-heading">
+                          <h4>Patient Details</h4>
                         </div>
-                      </li>
-                      <li class="media d-flex received">
-                        <div class="avatar flex-shrink-0">
-                          <img
-                            src="https://st3.depositphotos.com/8950810/17657/v/450/depositphotos_176577870-stock-illustration-cute-smiling-funny-robot-chat.jpg"
-                            alt="User Image"
-                            class="avatar-img rounded-circle"
-                          />
+                      </div>
+                      <div class="col-12 col-md-6 col-xl-4">
+                        <div class="input-block local-forms">
+                          <label
+                            >First Name
+                            <span class="login-danger">*</span></label
+                          >
+                          <input class="form-control" type="text" />
                         </div>
-                        <div class="media-body flex-grow-1">
-                          
+                      </div>
+                      <div class="col-12 col-md-6 col-xl-4">
+                        <div class="input-block local-forms">
+                          <label
+                            >Last Name
+                            <span class="login-danger">*</span></label
+                          >
+                          <input class="form-control" type="text" />
                         </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="chat-footer-box">
-                    <div class="discussion-sent">
-                      <div class="row gx-2">
-                        <div class="col-lg-12">
-                          <div class="footer-discussion">
-                            <div class="inputgroups">
+                      </div>
+                      <div class="col-12 col-md-6 col-xl-4">
+                        <div class="input-block select-gender">
+                          <label class="gen-label"
+                            >Gender<span class="login-danger">*</span></label
+                          >
+                          <div class="form-check-inline">
+                            <label class="form-check-label">
                               <input
-                              id="chat-input"
-                                type="text"
-                                value="I am not feeling well"
-                                placeholder="Type your Message here..."
-                              />
-                              <div class="micro-text position-icon">
-                                <img
-                                  src="/assets/img/icons/chat-foot-icon-04.svg"
-                                  alt
-                                />
-                              </div>
-                              <div class="send-chat position-icon comman-flex">
-                                <a href="javascript:;"
-                                  >
-                                <button id="send-button" class="send-chat position-icon comman-flex"  >
-                                    <img
-                                    src="/assets/img/icons/chat-foot-icon-03.svg"
-                                    alt
-                                    
-                                />
-                                </button>
-                            
-                            </a>
-                              </div>
-                              <div class="symple-text position-icon">
-                                <ul>
-                                  <li>
-                                    <a href="javascript:;"
-                                      ><img
-                                        src="/assets/img/icons/chat-foot-icon-01.svg"
-                                        class="me-2"
-                                        alt
-                                    /></a>
-                                  </li>
-                                  <li>
-                                    <a href="javascript:;"
-                                      ><img
-                                        src="/assets/img/icons/chat-foot-icon-02.svg"
-                                        alt
-                                    /></a>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
+                                type="radio"
+                                name="gender"
+                                class="form-check-input"
+                              />Male
+                            </label>
+                          </div>
+                          <div class="form-check-inline">
+                            <label class="form-check-label">
+                              <input
+                                type="radio"
+                                name="gender"
+                                class="form-check-input"
+                              />Female
+                            </label>
                           </div>
                         </div>
                       </div>
+                      <div class="col-12 col-md-6 col-xl-6">
+                        <div class="input-block local-forms">
+                          <label
+                            >Mobile <span class="login-danger">*</span></label
+                          >
+                          <input class="form-control" type="text" />
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6 col-xl-6">
+                        <div class="input-block local-forms">
+                          <label
+                            >Email <span class="login-danger">*</span></label
+                          >
+                          <input class="form-control" type="email" />
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12">
+                        <div class="input-block local-forms">
+                          <label
+                            >Address <span class="login-danger">*</span></label
+                          >
+                          <textarea
+                            class="form-control"
+                            rows="3"
+                            cols="30"
+                          ></textarea>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-heading">
+                          <h4>Appointment Details</h4>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6 col-xl-4">
+                        <div class="input-block local-forms cal-icon">
+                          <label
+                            >Date of Appointment
+                            <span class="login-danger">*</span></label
+                          >
+                          <input
+                            class="form-control datetimepicker"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6 col-xl-4">
+                        <div class="input-block local-forms">
+                          <label
+                            >From <span class="login-danger">*</span></label
+                          >
+                          <div class="time-icon">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="datetimepicker3"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6 col-xl-4">
+                        <div class="input-block local-forms">
+                          <label>To <span class="login-danger">*</span></label>
+                          <div class="time-icon">
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="datetimepicker4"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6 col-xl-6">
+                        <div class="input-block local-forms">
+                          <label>Consulting Doctor</label>
+                          <select class="form-control select">
+                            <option>Select Doctor</option>
+                            <option>Dr.Bernardo James</option>
+                            <option>Dr.Andrea Lalema</option>
+                            <option>Dr.William Stephin</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6 col-xl-6">
+                        <div class="input-block local-forms">
+                          <label>Treatment </label>
+                          <input class="form-control" type="text" />
+                        </div>
+                      </div>
+                      <div class="col-12 col-sm-12">
+                        <div class="input-block local-forms">
+                          <label
+                            >Notes <span class="login-danger">*</span></label
+                          >
+                          <textarea
+                            class="form-control"
+                            rows="3"
+                            cols="30"
+                          ></textarea>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6 col-xl-6">
+                        <div class="input-block local-top-form">
+                            
+                            <div>
+                                <input type="radio" id="online" name="status" value="online" checked>
+                                <label for="online">Online</label>
+                                <input type="radio" id="offline" name="status" value="offline">
+                                <label for="offline">Offline</label>
+                            </div>
+                        </div>
                     </div>
-                  </div>
+                    
+                      <div class="col-12">
+                        <div class="doctor-submit text-end">
+                          <button
+                            type="submit"
+                            class="btn btn-primary submit-form me-2"
+                          >
+                            Submit
+                          </button>
+                          <button
+                            type="submit"
+                            class="btn btn-primary cancel-form"
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -613,121 +713,63 @@
           </div>
         </div>
       </div>
+      <div id="delete_patient" class="modal fade delete-modal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-body text-center">
+              <img src="/assets/img/sent.png" alt width="50" height="46" />
+              <h3>Are you sure want to delete this ?</h3>
+              <div class="m-t-20">
+                <a href="#" class="btn btn-white" data-bs-dismiss="modal"
+                  >Close</a
+                >
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="sidebar-overlay" data-reff></div>
     <script
       src="/assets/js/jquery-3.7.1.min.js"
-      type="1d1b2ed4e42d99eb86ab9570-text/javascript"
+      type="ecd1e107046e62ce658f5e7a-text/javascript"
     ></script>
     <script
       src="/assets/js/bootstrap.bundle.min.js"
-      type="1d1b2ed4e42d99eb86ab9570-text/javascript"
+      type="ecd1e107046e62ce658f5e7a-text/javascript"
     ></script>
     <script
       src="/assets/js/feather.min.js"
-      type="1d1b2ed4e42d99eb86ab9570-text/javascript"
+      type="ecd1e107046e62ce658f5e7a-text/javascript"
     ></script>
     <script
       src="/assets/js/jquery.slimscroll.js"
-      type="1d1b2ed4e42d99eb86ab9570-text/javascript"
+      type="ecd1e107046e62ce658f5e7a-text/javascript"
     ></script>
     <script
       src="/assets/js/select2.min.js"
-      type="1d1b2ed4e42d99eb86ab9570-text/javascript"
-    ></script>
-    <script
-      src="/assets/plugins/datatables/jquery.dataTables.min.js"
-      type="1d1b2ed4e42d99eb86ab9570-text/javascript"
-    ></script>
-    <script
-      src="/assets/plugins/datatables/datatables.min.js"
-      type="1d1b2ed4e42d99eb86ab9570-text/javascript"
+      type="ecd1e107046e62ce658f5e7a-text/javascript"
     ></script>
 
     <script
-      src="/assets/js/jquery.waypoints.js"
-      type="1d1b2ed4e42d99eb86ab9570-text/javascript"
+      src="/assets/plugins/moment/moment.min.js"
+      type="ecd1e107046e62ce658f5e7a-text/javascript"
     ></script>
     <script
-      src="/assets/js/jquery.counterup.min.js"
-      type="1d1b2ed4e42d99eb86ab9570-text/javascript"
-    ></script>
-
-    <script
-      src="/assets/plugins/apexchart/apexcharts.min.js"
-      type="1d1b2ed4e42d99eb86ab9570-text/javascript"
-    ></script>
-    <script
-      src="/assets/plugins/apexchart/chart-data.js"
-      type="1d1b2ed4e42d99eb86ab9570-text/javascript"
+      src="/assets/js/bootstrap-datetimepicker.min.js"
+      type="ecd1e107046e62ce658f5e7a-text/javascript"
     ></script>
     <script
       src="/assets/js/app.js"
-      type="1d1b2ed4e42d99eb86ab9570-text/javascript"
+      type="ecd1e107046e62ce658f5e7a-text/javascript"
     ></script>
     <script
       src="../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"
-      data-cf-settings="1d1b2ed4e42d99eb86ab9570-|49"
+      data-cf-settings="ecd1e107046e62ce658f5e7a-|49"
       defer
     ></script>
-    <script>
-// Improved front-end JavaScript
-const chatMessagesList = document.querySelector('.chat-message');
-const chatInput = document.querySelector('#chat-input');
-const sendButton = document.querySelector('#send-button');
-
-sendButton.addEventListener('click', handleSendMessage);
-
-async function handleSendMessage() {
-  const userInput = chatInput.value;
-  chatInput.value = '';
-
-  try {
-    const response = await fetch('/generate-story', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt: userInput }),
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      console.log(data);
-      appendMessageToChat(userInput, 'sent');
-      appendMessageToChat(data.story, 'received');
-      
-
-    } else {
-      console.error('Error sending message:', response.statusText);
-    }
-  } catch (error) {
-    console.error('Error sending message:', error);
-  }
-}
-
-function appendMessageToChat(message, type) {
-  console.log('Appending message to chat:', message, type);
-
-  const messageElement = document.createElement('li');
-  messageElement.classList.add('media', 'd-flex', type === 'sent'? 'sent' : 'received');
-
-  // Use a template engine or a more robust way of creating HTML elements
-  messageElement.innerHTML = `
-    <div class="media-body flex-grow-1">
-      <div class="msg-box">
-        <div class="message-sub-box">
-          
-          <p>${message}</p>
-        </div>
-      </div>
-    </div>
-  `;
-
-  const chatMessagesList = document.querySelector('.chat-message');
-  chatMessagesList.appendChild(messageElement); // Append the messageElement to the chatMessagesList
-}
-
-    </script>
   </body>
 
-  <!-- Mirrored from preclinic.dreamstechnologies.com/html/template/chat.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 03 May 2024 14:32:24 GMT -->
+  
 </html>
