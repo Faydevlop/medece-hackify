@@ -279,7 +279,7 @@
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-body">
-                  <form>
+                  <form action="/book-appointment" method="post">
                     <div class="row">
                       <div class="col-12">
                         <div class="form-heading">
@@ -292,7 +292,7 @@
                             >First Name
                             <span class="login-danger">*</span></label
                           >
-                          <input class="form-control" type="text" />
+                          <input name="firstname" class="form-control" type="text" />
                         </div>
                       </div>
                       <div class="col-12 col-md-6 col-xl-4">
@@ -301,7 +301,7 @@
                             >Last Name
                             <span class="login-danger">*</span></label
                           >
-                          <input class="form-control" type="text" />
+                          <input name="lastname" class="form-control" type="text" />
                         </div>
                       </div>
                       <div class="col-12 col-md-6 col-xl-4">
@@ -334,7 +334,7 @@
                           <label
                             >Mobile <span class="login-danger">*</span></label
                           >
-                          <input class="form-control" type="text" />
+                          <input name="mobile" class="form-control" type="text" />
                         </div>
                       </div>
                       <div class="col-12 col-md-6 col-xl-6">
@@ -342,7 +342,7 @@
                           <label
                             >Email <span class="login-danger">*</span></label
                           >
-                          <input class="form-control" type="email" />
+                          <input name="email" class="form-control" type="email" />
                         </div>
                       </div>
                       <div class="col-12 col-sm-12">
@@ -350,7 +350,7 @@
                           <label
                             >Address <span class="login-danger">*</span></label
                           >
-                          <textarea
+                          <textarea name="address"
                             class="form-control"
                             rows="3"
                             cols="30"
@@ -368,9 +368,9 @@
                             >Date of Appointment
                             <span class="login-danger">*</span></label
                           >
-                          <input
+                          <input name="date"
                             class="form-control datetimepicker"
-                            type="text"
+                            type="date"
                           />
                         </div>
                       </div>
@@ -380,7 +380,7 @@
                             >From <span class="login-danger">*</span></label
                           >
                           <div class="time-icon">
-                            <input
+                            <input name="from-time"
                               type="text"
                               class="form-control"
                               id="datetimepicker3"
@@ -392,7 +392,7 @@
                         <div class="input-block local-forms">
                           <label>To <span class="login-danger">*</span></label>
                           <div class="time-icon">
-                            <input
+                            <input name="to-time"
                               type="text"
                               class="form-control"
                               id="datetimepicker4"
@@ -403,7 +403,7 @@
                       <div class="col-12 col-md-6 col-xl-6">
                         <div class="input-block local-forms">
                           <label>Consulting Doctor</label>
-                          <select class="form-control select">
+                          <select name="doctor" class="form-control select">
                             <option>Select Doctor</option>
                             <option>Dr.Bernardo James</option>
                             <option>Dr.Andrea Lalema</option>
@@ -413,29 +413,72 @@
                       </div>
                       <div class="col-12 col-md-6 col-xl-6">
                         <div class="input-block local-forms">
-                          <label>Treatment </label>
-                          <input class="form-control" type="text" />
+                          <label>Hospital</label>
+                          <select class="form-control" name="hospital" id="hospitalSelect">
+                            <option value="">Select Hospital</option>
+                            <option value="Aster Medcity">Aster Medcity</option>
+                            <option value="Amrita Hospital">Amrita Hospital</option>
+                            <option value="Lakeshore Hospital">Lakeshore Hospital</option>
+                            <!-- Add more hospitals here -->
+                          </select>
                         </div>
                       </div>
-                      <div class="col-12 col-sm-12">
+                      <div class="col-12 col-md-6 col-xl-6">
                         <div class="input-block local-forms">
-                          <label
-                            >Notes <span class="login-danger">*</span></label
-                          >
-                          <textarea
-                            class="form-control"
-                            rows="3"
-                            cols="30"
-                          ></textarea>
+                          <label>Symptoms</label>
+                        <select class="form-control" name="symptoms" id="symptomsSelect">
+                          <option value="">Select Symptom</option>
+                          <option value="Fever">Fever</option>
+                          <option value="Cough">Cough</option>
+                          <option value="Headache">Headache</option>
+                          <option value="Fatigue">Fatigue</option>
+                          <option value="Shortness of Breath">Shortness of Breath</option>
+                          <option value="Muscle Aches">Muscle Aches</option>
+                          <option value="Sore Throat">Sore Throat</option>
+                          <option value="Loss of Taste or Smell">Loss of Taste or Smell</option>
+                          <option value="Nausea">Nausea</option>
+                          <option value="Diarrhea">Diarrhea</option>
+                          <option value="Chills">Chills</option>
+                          <option value="Chest Pain">Chest Pain</option>
+                          <option value="Difficulty Breathing">Difficulty Breathing</option>
+                          <option value="Dizziness">Dizziness</option>
+                          <option value="Weakness">Weakness</option>
+                          <option value="Abdominal Pain">Abdominal Pain</option>
+                          <option value="Joint Pain">Joint Pain</option>
+                          <option value="Loss of Appetite">Loss of Appetite</option>
+                          <option value="Rash">Rash</option>
+                          <option value="Vomiting">Vomiting</option>
+                          <option value="Swollen Lymph Nodes">Swollen Lymph Nodes</option>
+                          <option value="Difficulty Swallowing">Difficulty Swallowing</option>
+                          <option value="Dry Cough">Dry Cough</option>
+                          <option value="Frequent Urination">Frequent Urination</option>
+                          <option value="Back Pain">Back Pain</option>
+                          <option value="Constipation">Constipation</option>
+                          <option value="Sweating">Sweating</option>
+                          <option value="Heartburn">Heartburn</option>
+                          <option value="Bloating">Bloating</option>
+                          <option value="Weight Loss">Weight Loss</option>
+                          <option value="Insomnia">Insomnia</option>
+                          <option value="Anxiety">Anxiety</option>
+                          <option value="Depression">Depression</option>
+                          <option value="Memory Loss">Memory Loss</option>
+                          <option value="Nasal Congestion">Nasal Congestion</option>
+                          <option value="Runny Nose">Runny Nose</option>
+                          <option value="Sneezing">Sneezing</option>
+                          <option value="Itchy Eyes">Itchy Eyes</option>
+                          <option value="Wheezing">Wheezing</option>
+                          <option value="Chest Tightness">Chest Tightness</option>
+                        </select>
                         </div>
                       </div>
+                      
                       <div class="col-12 col-md-6 col-xl-6">
                         <div class="input-block local-top-form">
                             
                             <div>
-                                <input type="radio" id="online" name="status" value="online" checked>
+                                <input type="radio" id="online" name="mode" value="online" checked>
                                 <label for="online">Online</label>
-                                <input type="radio" id="offline" name="status" value="offline">
+                                <input type="radio" id="offline" name="mode" value="offline">
                                 <label for="offline">Offline</label>
                             </div>
                         </div>
@@ -450,7 +493,7 @@
                             Submit
                           </button>
                           <button
-                            type="submit"
+                            type="button"
                             class="btn btn-primary cancel-form"
                           >
                             Cancel

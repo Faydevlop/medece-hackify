@@ -2,6 +2,7 @@ var express = require("express")
 var router = express.Router()
 var session = require("express-session")
 var Doctor = require("../model/doctorModel")
+const doctorModel = require("../model/doctorModel")
 
 router.use(
     session({
@@ -33,20 +34,11 @@ router.get("/register", function (req, res, next) {
 
 // get doctor profile page
 router.get("/profile", function (req, res, next) {
-    if (!req.session.doctorId) {
-        res.redirect("/login")
-    } else {
-        Doctor.findById(req.session.doctorId, function (err, doctor) {
-            if (err || !doctor) {
-                res.redirect("/login")
-            } else {
-                res.render("doctors/profile", {
-                    title: "Profile",
-                    doctor: doctor,
-                })
-            }
-        })
-    }
+   try {
+      res.render("doctor/doctor-dashboard")
+   } catch (error) {
+      console.log(error)
+   }
 })
 
 // Adding doctors
@@ -76,13 +68,23 @@ router.post("/register", async function (req, res, next) {
 
 // Login doctor
 router.post("/loginDoctor", async function (req, res, next) {
-    const { email, password } = req.body
-    const doctor = await Doctor.findOne({ email})
-    if (doctor) {
-        req.session.doctorId = doctor._id
-        res.redirect("/profile")
-    } else {
-        res.redirect("/login")
+    try {
+        const { email, password } = req.body
+        const doctor = await doctorModel.findOne({
+            email: email,
+            password: password,
+        })
+        console.log(doctor)
+        console.log(req.body)
+        if (doctor) {
+            req.session.doctorId = doctor._id
+            return res.redirect("/doctor/profile")
+        } else {
+            return res.redirect("/doctor/login")
+        }
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send("Internal Server Error")
     }
 })
 //get Appointments
