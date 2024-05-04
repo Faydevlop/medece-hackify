@@ -10,6 +10,7 @@ var usersRouter = require('./routes/users');
 var hospitalRouter = require('./routes/hospital')
 var prescriptionRouter = require('./routes/prescription')
 
+
 var app = express();
 const port = 4000
 //mongo db connection

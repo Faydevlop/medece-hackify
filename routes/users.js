@@ -119,6 +119,44 @@ router.post('/finddocter', authMiddleware, async function(req, res, next) {
 
 });
 
+router.get('/vediocall', function(req, res, next) {
+  res.render('user/videocall');
+});
+
+
+const { GoogleGenerativeAI } = require('@google/generative-ai');
+
+// Replace with your API key
+const genAI = new GoogleGenerativeAI('AIzaSyBQGuYJeShMjlg_QiDHHDeukkLl4zjyado');
+
+router.get('/chat',(req,res)=>{
+    res.render('user/chat')
+})
+
+router.post('/generate-story', async (req, res) => {
+  try {
+    const prompt = req.body.prompt; // Extract user input from request body
+
+    const generationConfig = {
+      stopSequences: ['red'],
+      maxOutputTokens: 200,
+      temperature: 0.9,
+      topP: 0.1,
+      topK: 16,
+    };
+
+    const model = genAI.getGenerativeModel({ model: 'gemini-pro', generationConfig });
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const storyText = response.text();
+
+    return res.json({ story: storyText });
+    // Send generated story as JSON
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Story generation failed' });
+  }
+});
 
 
 
