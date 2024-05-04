@@ -59,42 +59,42 @@
                     <h2>Getting Started</h2>
 
                     <form
-                      action="/login"
+                      action="/register" method="post"
                     >
                       <div class="input-block">
                         <label
                           >Full Name <span class="login-danger">*</span></label
                         >
-                        <input class="form-control" type="text" />
+                        <input class="form-control" name="name" type="text" />
                       </div>
                       <div class="input-block">
                         <label>Email <span class="login-danger">*</span></label>
-                        <input class="form-control" type="text" />
+                        <input class="form-control" name="email" type="text" />
                       </div>
                       <div class="input-block">
                         <label
                           >age <span class="login-danger">*</span></label
                         >
-                        <input class="form-control" type="number" />
+                        <input class="form-control" name="age" type="number" />
                       </div>
                       <div class="input-block">
                         <label
                           >phone <span class="login-danger">*</span></label
                         >
-                        <input class="form-control" type="number" />
+                        <input class="form-control" name="phone" type="number" />
                       </div>
 
                       <div class="input-block">
                         <label for="gender">Gender <span class="login-danger">*</span></label>
-                        <select id="gender" class="form-control">
-                            <option value="male">Male</option>
+                        <select id="gender" name="gender" class="form-control">
+                            <option value="male" >Male</option>
                             <option value="female">Female</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
                     <div class="input-block">
                         <label for="city">City <span class="login-danger">*</span></label>
-                        <select id="city" class="form-control">
+                        <select id="city" name="city" class="form-control">
                             <option value="thiruvananthapuram">Thiruvananthapuram</option>
                             <option value="kochi">Kochi</option>
                             <option value="kozhikode">Kozhikode</option>
@@ -175,7 +175,7 @@
                         >
                         <input
                           class="form-control pass-input"
-                          type="password"
+                          type="password" name="password"
                         />
                         <span
                           class="profile-views feather-eye-off toggle-password"
@@ -189,6 +189,7 @@
                         <input
                           class="form-control pass-input-confirm"
                           type="password"
+                          name=" c-password"
                         />
                         <span
                           class="profile-views feather-eye-off confirm-password"
