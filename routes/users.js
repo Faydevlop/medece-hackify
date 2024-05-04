@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const patientModel = require('../model/patientModel');
 const session = require("express-session");
+const authMiddleware = require('../routes/authMiddleware');
 //implementing session
 router.use(
     session({
@@ -15,15 +16,31 @@ router.get('/register', function(req, res, next) {
   res.render('user/register');
 });
 // adding patients
-router.post("/register", function(req, res, next) {
-     try {
-       const newPatient = new patientModel(req.body);
-       newPatient.save();
-       res.redirect("/login");
-     } catch (error) {
-      console.log(error);
-     }
+router.post("/register", async function (req, res, next) {
+    try {
+        const { name, email, password, age, gender, city, phone } = req.body
+     
+        const newPatient = new patientModel({
+            name,
+            email,
+            password,
+            age,
+            gender,
+            city,
+            phone,
+        })
+       
+        await newPatient.save()
+      
+        res.redirect("/login")
+    } catch (error) {
+     
+        console.log(error)
+      
+        res.status(500).send("Internal Server Error")
+    }
 })
+
 //getting login page
 router.get('/login', function(req, res, next) {
   res.render('user/login');
@@ -46,7 +63,7 @@ router.post("/login", async function (req, res, next) {
     }
 })
 //getting patient dashboard after login
-router.get("/patient-dashboard", function (req, res, next) {
+router.get("/patient-dashboard",authMiddleware,  function (req, res, next) {
     const user = req.session.user 
     if (user) {
         res.render("user/patient-dashboard", {user: user })

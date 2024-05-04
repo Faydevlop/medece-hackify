@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require("mongoose")
 
 var docterRouter = require('./routes/doctors');
 var usersRouter = require('./routes/users');
@@ -10,6 +11,13 @@ var clinicRouter = require('./routes/clinic')
 
 var app = express();
 const port = 4000
+//mongo db connection
+mongoose.connect("mongodb://localhost:27017/medece").then(()=>{
+  console.log("connected to db")
+}).catch((err)=>{
+  console.log("could not connect to db",err)
+})
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

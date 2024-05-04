@@ -59,11 +59,11 @@
                     <h2>Login</h2>
 
                     <form
-                      action="/"
+                      action="/login" method="post"
                     >
                       <div class="input-block">
                         <label>Email <span class="login-danger">*</span></label>
-                        <input class="form-control" type="text" />
+                        <input class="form-control" name="email" type="text" />
                       </div>
                       <div class="input-block">
                         <label
@@ -71,7 +71,7 @@
                         >
                         <input
                           class="form-control pass-input"
-                          type="password"
+                          type="password" name="password"
                         />
                         <span
                           class="profile-views feather-eye-off toggle-password"
