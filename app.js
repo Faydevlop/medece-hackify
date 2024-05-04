@@ -7,7 +7,7 @@ var mongoose = require("mongoose")
 
 var docterRouter = require('./routes/doctors');
 var usersRouter = require('./routes/users');
-var clinicRouter = require('./routes/clinic')
+var hospitalRouter = require('./routes/hospital')
 var prescriptionRouter = require('./routes/prescription')
 
 var app = express();
@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/doctor', docterRouter);
 app.use('/', usersRouter);
-app.use('/clinic',clinicRouter)
+app.use("/hospital", hospitalRouter)
 app.use('/prescription',prescriptionRouter)
 
 // catch 404 and forward to error handler

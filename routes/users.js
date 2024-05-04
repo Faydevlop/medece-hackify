@@ -4,6 +4,7 @@ const patientModel = require('../model/patientModel');
 const session = require("express-session");
 const authMiddleware = require('../routes/authMiddleware')
 const prescriptionModel = require('../model/prescriptionModel');
+const doctorModel = require("../model/doctorModel")
 //implementing session
 router.use(
     session({
@@ -93,9 +94,29 @@ router.get('/prescriptionassist', async function(req, res, next) {
 router.get('/enterdetials', authMiddleware,function(req, res, next) {
   res.render('user/consult');
 });
+//finding doctor by filtering
+router.post('/finddocter', authMiddleware, async function(req, res, next) {
+   try {
+       const { symptoms, hospital, specialty } = req.body
+       if(hospital){
+           const doctors = await doctorModel.find({ hospital: hospital })
+             res.render("user/finddocter", { doctors })
+       }else if (hospital && specialty) {
+          const doctors = await doctorModel.find({
+              $and: [{ specialization: specialty }, { hospital: hospital }],
+          })
+            res.render("user/finddocter", { doctors })
 
-router.get('/finddocter', authMiddleware,function(req, res, next) {
-  res.render('user/finddocter');
+       } else if (specialty) {
+         const doctors = await doctorModel.find({ specialization: specialty })
+           res.render("user/finddocter", { doctors })
+       }
+
+      
+   } catch (error) {
+      console.log(error)
+   }
+
 });
 
 

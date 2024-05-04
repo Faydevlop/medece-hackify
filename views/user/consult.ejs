@@ -289,7 +289,7 @@
           <div class="col-sm-12">
             <div class="card">
               <div class="card-body">
-                <form>
+                <form action="/finddocter" method="POST">
                   <div class="row">
                     <div class="col-12">
                       <div class="form-heading">
@@ -299,7 +299,7 @@
                     <div class="col-12 col-md-6 col-xl-6">
                         <div class="input-block local-forms">
                             <label>Speciality <span class="login-danger">*</span></label>
-                            <select class="form-control" id="specialtySelect">
+                            <select class="form-control" name="specialty" id="specialtySelect">
                                 <option value="">Select Speciality</option>
                                 <option value="Cardiology">Cardiology</option>
                                 <option value="Dermatology">Dermatology</option>
@@ -320,7 +320,7 @@
                     <div class="col-12 col-md-6 col-xl-6">
                         <div class="input-block local-forms">
                             <label>Hospitals <span class="login-danger">*</span></label>
-                            <select class="form-control" id="hospitalSelect">
+                            <select class="form-control" name="hospital" id="hospitalSelect">
                                 <option value="">Select Hospital</option>
                                 <option value="Aster Medcity">Aster Medcity</option>
                                 <option value="Amrita Hospital">Amrita Hospital</option>
@@ -334,7 +334,7 @@
                     <div class="col-12 col-md-6 col-xl-12">
                         <div class="input-block local-forms">
                             <label>Select Symptom <span class="login-danger">*</span></label>
-                            <select class="form-control" id="symptomsSelect">
+                            <select class="form-control" name="symptoms" id="symptomsSelect">
                                 <option value="">Select Symptom</option>
                                 <option value="Fever">Fever</option>
                                 <option value="Cough">Cough</option>
