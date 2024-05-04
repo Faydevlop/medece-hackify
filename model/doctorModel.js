@@ -3,17 +3,23 @@ const Schema = new mongoose.Schema({
     name: String,
     specialization: String,
     experience: Number,
-    fees: Number,
-    image: String,
+    image:{
+        type:String,
+        required:false
+    },
     description: String,
     address: String,
-    timings: String,
+    timings:{
+        type:String,
+        required:fa
+
+    },
     phone: String,
     email: String,
     city:String,
     password: String,
-    isVerified: Boolean,
-    isBlocked: Boolean,
+    // isVerified: Boolean,
+    // isBlocked: Boolean,
     
 })
 module.exports = mongoose.model('Doctor', Schema)

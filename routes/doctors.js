@@ -13,12 +13,22 @@ router.use(
 
 /* GET login page. */
 router.get("/login", function (req, res, next) {
-    res.render("doctors/login", { title: "Login" })
+  try {
+    res.render("doctor/login")
+  } catch (error) {
+    console.log(error)
+  }
+    
 })
 
 // get doctor register page
 router.get("/register", function (req, res, next) {
-    res.render("doctors/register", { title: "Register" })
+  try {
+     res.render("doctor/register")
+  } catch (error) {
+     console.log(error) 
+  }
+   
 })
 
 // get doctor profile page

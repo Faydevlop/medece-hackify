@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/docter', docterRouter);
+app.use('/doctor', docterRouter);
 app.use('/', usersRouter);
 app.use('/clinic',clinicRouter)
 app.use('/prescription',prescriptionRouter)
