@@ -1,20 +1,17 @@
 const mongoose = require("mongoose");
 const Schema = new mongoose.Schema({
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Patient",
-    },
-    doctorId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Doctor",
-    },
-    dateTime: {
-        type: Date,
-        required: true,
-    },
-    status: {
-        type: Boolean,
-        default: false,
-    },
+    firstname: String,
+    lastname: String,
+    gender: String,
+    mobile: Number,
+    email: String,
+    address: String,
+    date: String,
+    From: String,
+    To: String,
+    doctor: String,
+    Hospital: String,
+    Symptom: String,
+    mode: String,
 })
 module.exports = mongoose.model("appointment", Schema)

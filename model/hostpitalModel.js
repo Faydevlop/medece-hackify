@@ -10,5 +10,9 @@ const Schema = new mongoose.Schema({
         type: String,
         required: false,
     },
+    departments: {
+        type: [String],
+        default: [], 
+    },
 })
 module.exports = mongoose.model("Hostpital", Schema)

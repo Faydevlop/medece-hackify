@@ -73,11 +73,16 @@ router.post("/login", async (req, res) => {
 
 
 //dashboard
-router.get("/Dashboard", (req, res) => {
+router.get("/Dashboard", async(req, res) => {
     try {
         const id = req.session.hospitalId
-        const hospital = hostpitalModel.findById(id)
-        res.render("hospital/hospitalDashboard", { hospital: hospital })
+        console.log(id) 
+        const hospital =await hostpitalModel.findById(id)
+         const doctors = await doctorModel.find({
+             hospital: req.session.hospitalId,
+         })
+        console.log(hospital)
+        res.render("hospital/hospitalDashboard", { hospital, doctors })
     } catch (error) {
         console.log(error)
     }
@@ -128,7 +133,39 @@ router.post("/add-doctor",async (req, res) => {
           console.log(error)  
         }
 })
+//get all dept under the hospital
 
+router.get("/getDept", (req, res) => {
+    try {
+       res.render("hospital/department") 
+    } catch (error) {
+       console.log(error) 
+    }
+
+})
+
+router.get("/getAddDept", (req, res) => {
+    try {
+        res.render("hospital/add-department")
+    } catch (error) {
+       console.log(error) 
+    }
+})
+
+//adding dept to hospital model
+router.post("/addingDept",async (req, res) => {
+    try {
+        const {departmentName} = req.body
+   const deptUpdate =  await  hostpitalModel.findByIdAndUpdate(req.session.hospitalId, {
+            $push: {
+                departments: departmentName
+            }
+        })
+        res.redirect("/hospital/dashboard")
+    } catch (error) {
+        console.log(error)
+    }
+})
 //logout  
 router.get("/logout", (req, res) => {
   try {

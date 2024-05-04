@@ -5,6 +5,7 @@ const session = require("express-session");
 const authMiddleware = require('../routes/authMiddleware')
 const prescriptionModel = require('../model/prescriptionModel');
 const doctorModel = require("../model/doctorModel")
+const appointmentModel= require("../model/appointmentModel")
 const requestIp = require('request-ip');
 const geoip = require('geoip-lite');
 //implementing session
@@ -167,7 +168,31 @@ router.post('/generate-story', async (req, res) => {
 router.get('/appointment',authMiddleware,(rea,res)=>{
   res.render('user/appointment')
 })
+//booking an appointment
 
+router.post("/book-appointment",async(req,res)=>{
+   try {
+    const { firstname, lastname, gender, mobile, email, address, date, From, To, doctor, Hospital, Symptom, mode } = req.body
+    await new appointmentModel({
+        firstname,
+        lastname,
+        gender,
+        mobile,
+        email,
+        address,
+        date,
+        From,
+        To,
+        doctor,
+        Hospital,
+        Symptom,
+        mode,
+    }).save()
+    res.send('<script>alert("Appointment booked successfully")</script>')
+   } catch (error) {
+    
+   }
+})
 
 router.get('/pharma',authMiddleware,(req,res)=>{
   res.render('user/pharma/pharma')
