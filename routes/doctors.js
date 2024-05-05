@@ -4,6 +4,7 @@ var session = require("express-session")
 var Doctor = require("../model/doctorModel")
 const doctorModel = require("../model/doctorModel")
 const appointmentModel = require("../model/appointmentModel")
+const prescriptionModel= require("../model/prescriptionModel")
 
 router.use(
     session({
@@ -112,7 +113,33 @@ router.get("/appointment-List", async function (req, res, next) {
         console.error(error)
     }
 })
+//list all prescription
 
+router.get("/prescriptionListing", async function (req, res, next) {
+    try {
+       const prescriptions= await prescriptionModel.find({ }) 
+       res.render("doctor/prescription-list", {prescriptions})
+    } catch (error) {
+        console.error(error)
+    }
+})
+
+// reviewing prescription
+
+router.post("/reviewingPrescription", async function (req, res, next) {
+    try {
+        const prescriptionId = req.body.prescriptionId
+        const comment = req.body.prescriptionComment
+        await prescriptionModel.findByIdAndUpdate(prescriptionId, {
+            comment: comment,
+        })
+
+        res.status(200).send("<script>alert('Prescription Reviewed');window.location='/doctor/prescriptionListing'</script>")
+    } catch (error) {
+        console.error(error)
+        res.status(500).send("Internal Server Error")
+    }
+})
 // Logout doctor
 router.get("/logout", async function (req, res, next) {
     req.session.destroy(function (err) {
