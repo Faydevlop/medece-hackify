@@ -330,10 +330,11 @@
                             <label>Hospitals <span class="login-danger">*</span></label>
                             <select class="form-control" name="hospital" id="hospitalSelect">
                                 <option value="">Select Hospital</option>
-                                <option value="Aster Medcity">Aster Medcity</option>
-                                <option value="Amrita Hospital">Amrita Hospital</option>
-                                <option value="Lakeshore Hospital">Lakeshore Hospital</option>
-                                <!-- Add more hospitals here -->
+                                <% for(hospital of hospitals ) { %>
+                                    <option value="<%=hospital.username %>"><%=hospital.username %></option>
+                                <% } %>
+                               
+                             
                             </select>
                         </div>
                     </div>

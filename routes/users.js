@@ -6,6 +6,7 @@ const authMiddleware = require('../routes/authMiddleware')
 const prescriptionModel = require('../model/prescriptionModel');
 const doctorModel = require("../model/doctorModel")
 const appointmentModel= require("../model/appointmentModel")
+const hospitalModel = require("../model/hostpitalModel")
 const requestIp = require('request-ip');
 const geoip = require('geoip-lite');
 //implementing session
@@ -98,8 +99,10 @@ router.get('/prescriptionassist', async function(req, res, next) {
 });
 
 
-router.get('/enterdetials', authMiddleware,function(req, res, next) {
-  res.render('user/consult');
+router.get('/enterdetials', authMiddleware,async function(req, res, next) {
+  const doctors = await doctorModel.find({})
+  const hospitals = await hospitalModel.find({})
+  res.render('user/consult',{doctors, hospitals});
 });
 //finding doctor by filtering
 router.post("/finddocter", authMiddleware, async function (req, res, next) {
@@ -165,8 +168,10 @@ router.post('/generate-story', async (req, res) => {
 });
 
 
-router.get('/appointment',authMiddleware,(rea,res)=>{
-  res.render('user/appointment')
+router.get('/appointment',async(rea,res)=>{
+  const doctors =  await doctorModel.find({})
+  const hospitals = await hospitalModel.find({})
+  res.render('user/appointment',{doctors, hospitals})
 })
 //booking an appointment
 

@@ -3,6 +3,7 @@ var router = express.Router()
 var session = require("express-session")
 var Doctor = require("../model/doctorModel")
 const doctorModel = require("../model/doctorModel")
+const appointmentModel = require("../model/appointmentModel")
 
 router.use(
     session({
@@ -78,6 +79,7 @@ router.post("/loginDoctor", async function (req, res, next) {
         console.log(req.body)
         if (doctor) {
             req.session.doctorId = doctor._id
+            req.session.doctorName = doctor.firstname
             return res.redirect("/doctor/profile")
         } else {
             return res.redirect("/doctor/login")
@@ -95,6 +97,19 @@ router.get("/appointments", async function (req, res, next) {
     } else {
        const Appointments= await appointmentModel.find({ doctorId: req.session.doctorId })
         res.render("doctors/appointments", { Appointments })
+    }
+})
+
+//list all the appoitments of that doctor
+
+router.get("/appointment-List", async function (req, res, next) {
+    try {
+        const appointments = await appointmentModel.find({
+            doctor: req.session.doctorName,
+        })
+        res.render("doctor/appointment-list", { appointments })
+    } catch (error) {
+        console.error(error)
     }
 })
 
