@@ -14,7 +14,7 @@ var prescriptionRouter = require('./routes/prescription')
 var app = express();
 const port = 4000
 //mongo db connection
-mongoose.connect("mongodb+srv://fayfayis74:eCBsYoAE6hC9T9ea@mooncart-db.hh6wpmo.mongodb.net/EcommerceDb").then(()=>{
+mongoose.connect("mongodb+srv://fayfayis74:ixm5WgWHskblFveo@medeasedb.qomgv.mongodb.net/?retryWrites=true&w=majority&appName=medeasedb").then(()=>{
   console.log("connected to db")
 }).catch((err)=>{
   console.log("could not connect to db",err)
